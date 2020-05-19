@@ -1,0 +1,15 @@
+{
+  "source": [
+    {
+      "url": "urlValue",
+      "scrapePath": {
+        "objectKey": "HTML path",
+        "objectKey2": "HTML path 2",
+        "objectKey3": {
+          "nestedKey1": "HTML path of nested object",
+          "nestedKey2": "HTML path of nested object"
+        }
+      }
+    }
+  ]
+}

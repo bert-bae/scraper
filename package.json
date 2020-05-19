@@ -1,0 +1,27 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "The web scraping tool using the existing web scraping tools available on the web today. It allows you to create easy to configure YAML configuration files to pinpoint the data you want to pull from a HTML page into your custom object structures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bert-bae/scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bert-bae/scraper/issues"
+  },
+  "homepage": "https://github.com/bert-bae/scraper#readme",
+  "dependencies": {
+    "crawler": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1"
+  }
+}
