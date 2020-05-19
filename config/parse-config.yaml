@@ -3,6 +3,7 @@ Global:
   Options:
     # CrawlerIO options go here...
 
+# Local options will always overwrite global options if two of the same values exist
 Resources:
   ScraperConfig:
     Url: false # Default is false... If Url is present, then it will use Url, otherwise, BaseUrl + Path must be present for global settings to work correctly
@@ -11,5 +12,7 @@ Resources:
     Instructions:
       - Path: 'span#id-value p'
         Output: 'outputKeyOne'
+        Operation: html()
       - Path: 'div.className'
         Output: 'outputKeyTwo'
+        Operation: text()

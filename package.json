@@ -21,6 +21,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "crawler": "^1.2.1",
+    "shortid": "^2.2.15",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
