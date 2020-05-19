@@ -1,0 +1,10 @@
+Global:
+  Test: 1
+  World: 2
+
+ScraperConfig:
+  Instructions:
+    - Path: 'span#id-value p'
+      Key: 'id-value'
+    - Path: 'div.className'
+      Key: 'divClassName'

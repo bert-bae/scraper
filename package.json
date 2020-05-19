@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/bert-bae/scraper#readme",
   "dependencies": {
-    "crawler": "^1.2.1"
+    "chalk": "^4.0.0",
+    "crawler": "^1.2.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "@types/node": "^14.0.1"
+    "@types/node": "^14.0.1",
+    "ts-node": "^8.10.1"
   }
 }

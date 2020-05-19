@@ -2,11 +2,13 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": false,
-    "outDir": "ts-build/"
+    "allowJs": true,
+    "outDir": "ts-build/",
+    "typeRoots": ["./typings", "node_modules/@types"]
   },
   "include": ["src/*"],
   "exclude": ["node_modules", ".npm"]
