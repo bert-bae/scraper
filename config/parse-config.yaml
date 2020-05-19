@@ -1,10 +1,15 @@
 Global:
-  Test: 1
-  World: 2
+  BaseUrl: 'https://star-crawl.bertcode.com'
+  Options:
+    # CrawlerIO options go here...
 
-ScraperConfig:
-  Instructions:
-    - Path: 'span#id-value p'
-      Key: 'id-value'
-    - Path: 'div.className'
-      Key: 'divClassName'
+Resources:
+  ScraperConfig:
+    Url: false # Default is false... If Url is present, then it will use Url, otherwise, BaseUrl + Path must be present for global settings to work correctly
+    Path: '/'
+    Options: true # CrawlerIO options go here
+    Instructions:
+      - Path: 'span#id-value p'
+        Output: 'outputKeyOne'
+      - Path: 'div.className'
+        Output: 'outputKeyTwo'
