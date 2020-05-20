@@ -1,45 +1,30 @@
 import * as chalk from 'chalk';
 import * as shortId from 'shortid';
 
-interface GlobalOptions {
-  BaseUrl?: string;
-  Options?: object;
-}
+import {
+  Instruction,
+  ScraperConfiguration,
+  ScraperQueue,
+} from '../../typings/types';
 
-interface Instruction {
-  Path: string;
-  Output: string;
-  Operation: string;
-}
-
-interface SubConfiguration {
-  Url?: string;
-  Path?: string;
-  Options?: object;
-  Instructions: Instruction[];
-}
-
-interface ScraperConfiguration {
-  Global?: GlobalOptions;
-  Resources: {
-    readonly [propName: string]: SubConfiguration;
-  };
-}
-
-const generateCallback = (crawler: Function, instructions: Instruction[]) => {
-  return (err: object, res: any, done: any) => {
+const generateCallback = (instructions: Instruction[]) => {
+  return (err: object, res: any, done: any): void => {
     if (err) {
       console.error(chalk.red(err));
     } else {
-      const result = {
+      const result: { [propName: string]: any } = {
         id: shortId.generate(),
       };
+      const $ = res.$;
 
+      // result.test = $.html();
       instructions.forEach((set) => {
-        result[set.Output] = crawler(set.Path)[set.Operation]();
+        result[set.Output] = $(set.Path)[set.Operation]();
       });
 
-      return result;
+      console.log(result);
+
+      done();
     }
   };
 };
@@ -47,7 +32,7 @@ const generateCallback = (crawler: Function, instructions: Instruction[]) => {
 export const generateQueue = (
   crawler: Function,
   config: ScraperConfiguration
-): object[] => {
+): ScraperQueue[] => {
   const baseUrl = config.Global.BaseUrl;
   const globalOptions = config.Global.Options;
   const result = [];
@@ -58,13 +43,12 @@ export const generateQueue = (
       ...globalOptions,
       ...resource.Options,
       uri: baseUrl ? `${baseUrl}${resource.Path}` : resource.Url,
-      callback: generateCallback(crawler, resource.Instructions),
+      callback: generateCallback(resource.Instructions),
     };
 
     console.log(chalk.magenta(`[Generate resource queue '${i}' successfully]`));
-    console.log(chalk.yellow(JSON.stringify(queue, null, 2)));
 
-    result.push(result);
+    result.push(queue);
   }
   return result;
 };

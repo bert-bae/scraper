@@ -1,5 +1,5 @@
 Global:
-  BaseUrl: 'https://star-crawl.bertcode.com'
+  BaseUrl: 'https://www.google.ca'
   Options:
     # CrawlerIO options go here...
 
@@ -10,9 +10,9 @@ Resources:
     Path: '/'
     Options: true # CrawlerIO options go here
     Instructions:
-      - Path: 'span#id-value p'
+      - Path: 'p'
         Output: 'outputKeyOne'
-        Operation: html()
-      - Path: 'div.className'
-        Output: 'outputKeyTwo'
-        Operation: text()
+        Operation: html
+      # - Path: 'div.crawler-content h1'
+      #   Output: 'outputKeyTwo'
+      #   Operation: text

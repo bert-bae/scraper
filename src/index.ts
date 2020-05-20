@@ -1,23 +1,21 @@
-const Crawler = require('crawler');
+import * as Crawler from 'crawler';
+import { generateQueue } from './processor';
+import { loadAllConfigs } from './config-loader';
 
-const c = new Crawler({
+import { ScraperConfiguration } from '../typings/types';
+
+const crawler = new Crawler({
+  jQuery: true,
   rateLimit: 1000,
   maxConnections: 10,
 });
 
-const queueList = [];
+const configs = loadAllConfigs('../config');
 
-c.queue([
-  {
-    // uri: 'https://star-crawl.bertcode.com',
-    uri: 'http://bcliquorstores.com/product-catalogue?sort=name.raw:asc&page=1',
-    callback: (err: object, res: any, done: any) => {
-      if (err) {
-        //
-      } else {
-        const $ = res.$;
-        console.log($('body').html());
-      }
-    },
-  },
-]);
+const queues = configs.map((i: ScraperConfiguration) => {
+  return generateQueue(crawler, i);
+});
+
+queues.forEach((i) => {
+  crawler.queue(i);
+});

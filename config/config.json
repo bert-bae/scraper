@@ -1,0 +1,20 @@
+{
+  "Global": {
+    "baseUrl": "https://www.google.com"
+  },
+  "ScraperConfig": {
+    "Path": "/",
+    "Instructions": [
+      {
+        "Path": "span#id-value p",
+        "Key": "id-value",
+        "Operation": "html"
+      },
+      {
+        "Path": "div.className",
+        "Key": "divClassName",
+        "Operation": "text"
+      }
+    ]
+  }
+}

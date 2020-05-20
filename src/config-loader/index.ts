@@ -2,17 +2,20 @@ import * as YAML from 'yamljs';
 import * as fs from 'fs';
 import * as chalk from 'chalk';
 
-export const loadAllConfigs = (): object[] => {
+export const loadAllConfigs = (basePath: string): object[] => {
   const result = [];
-  const fileNames = fs.readdirSync('../../config');
+  const fileNames = fs.readdirSync(basePath);
 
+  console.log(fileNames);
   fileNames.forEach((file) => {
-    const config = YAML.load(`../../config/${file}`);
+    if (/.yaml|.yml/.test(file)) {
+      const config = YAML.load(`${basePath}/${file}`);
 
-    console.log(chalk.magenta('====Config===='));
-    console.log(chalk.yellow(JSON.stringify(config, null, 2)));
+      console.log(chalk.magenta('====Config===='));
+      console.log(chalk.yellow(JSON.stringify(config, null, 2)));
 
-    result.push(config);
+      result.push(config);
+    }
   });
 
   return result;
