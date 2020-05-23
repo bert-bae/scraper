@@ -9,17 +9,18 @@ interface Instruction {
   Operation: string;
 }
 
-interface SubConfiguration {
+interface Resource {
   Url?: string;
   Path?: string;
   Options?: object;
+  Output?: boolean;
   Instructions: Instruction[];
 }
 
 interface ScraperConfiguration {
   Global?: GlobalOptions;
   Resources: {
-    [propName: string]: SubConfiguration;
+    [propName: string]: Resource;
   };
 }
 
@@ -32,7 +33,7 @@ interface ScraperQueue {
 export {
   GlobalOptions,
   Instruction,
-  SubConfiguration,
+  Resource,
   ScraperConfiguration,
   ScraperQueue,
 };

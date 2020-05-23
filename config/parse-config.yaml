@@ -1,5 +1,5 @@
 Global:
-  BaseUrl: 'https://www.google.ca'
+  BaseUrl: ''
   Options:
     # CrawlerIO options go here...
 
@@ -8,11 +8,15 @@ Resources:
   ScraperConfig:
     Url: false # Default is false... If Url is present, then it will use Url, otherwise, BaseUrl + Path must be present for global settings to work correctly
     Path: '/'
+    Output: true
     Options: true # CrawlerIO options go here
     Instructions:
-      - Path: 'p'
-        Output: 'outputKeyOne'
+      - Path: 'body'
+        Output: 'outputKeyZero'
         Operation: html
-      # - Path: 'div.crawler-content h1'
-      #   Output: 'outputKeyTwo'
-      #   Operation: text
+      - Path: 'div.crawler-content h1'
+        Output: 'outputKeyOne'
+        Operation: text
+      - Path: 'div.crawler-content'
+        Output: 'outputKeyTwo'
+        Operation: html
