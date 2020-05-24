@@ -1,10 +1,10 @@
 import * as chalk from 'chalk';
-import * as shortId from 'shortid';
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { generateInstructions } from './instruction-generator';
+
 import {
-  Instruction,
   Resource,
   ScraperConfiguration,
   ScraperQueue,
@@ -12,35 +12,13 @@ import {
 
 const __dirname = path.resolve();
 
-const generateInstructions = (
-  crawler: Function,
-  instructions: Instruction[]
-): object => {
-  const result: { [propName: string]: any } = {
-    id: shortId.generate(),
-  };
-
-  instructions.forEach((set) => {
-    const elements = crawler(set.Path);
-    const output = [];
-
-    elements.each((i, el) => {
-      output.push(crawler(el)[set.Operation]());
-    });
-
-    result[set.Output] = output;
-  });
-
-  return result;
-};
-
 const generateCallback = (name: string, resource: Resource) => {
   return (err: object, res: any, done: any): void => {
     if (err) {
       console.error(chalk.red(err));
     } else {
       const $ = res.$;
-      const result = generateInstructions($, resource.Instructions);
+      const result = generateInstructions($, resource.Instructions, []);
 
       if (resource.Output) {
         fs.mkdirSync(`${__dirname}/output`, { recursive: true });

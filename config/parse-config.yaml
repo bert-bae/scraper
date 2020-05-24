@@ -1,22 +1,15 @@
 Global:
-  BaseUrl: ''
+  BaseUrl: 'https://www.otisamantha.com'
   Options:
     # CrawlerIO options go here...
 
 # Local options will always overwrite global options if two of the same values exist
 Resources:
-  ScraperConfig:
-    Url: false # Default is false... If Url is present, then it will use Url, otherwise, BaseUrl + Path must be present for global settings to work correctly
-    Path: '/'
+  Otisamantha:
+    Url: false
+    Path: /
     Output: true
-    Options: true # CrawlerIO options go here
     Instructions:
-      - Path: 'body'
-        Output: 'outputKeyZero'
-        Operation: html
-      - Path: 'div.crawler-content h1'
-        Output: 'outputKeyOne'
+      - Selector: 'p'
+        Output: post
         Operation: text
-      - Path: 'div.crawler-content'
-        Output: 'outputKeyTwo'
-        Operation: html

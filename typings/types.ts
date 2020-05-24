@@ -4,9 +4,9 @@ interface GlobalOptions {
 }
 
 interface Instruction {
-  Path: string;
+  Selector: string;
   Output: string;
-  Operation: string;
+  Operation: string | Instruction[];
 }
 
 interface Resource {
