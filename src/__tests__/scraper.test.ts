@@ -38,10 +38,56 @@ const instructions = [
   },
 ];
 
+const expected = [
+  {
+    name: 'Baeritto',
+    age: '28',
+    votes: {
+      likes: '10',
+      dislikes: '2',
+    },
+  },
+  {
+    name: 'Toastalicious',
+    age: '27',
+    votes: {
+      likes: '300123',
+      dislikes: '17',
+    },
+  },
+  {
+    name: 'Crazy Stew',
+    age: '27',
+    votes: {
+      likes: '20',
+      dislikes: '2',
+    },
+  },
+  {
+    name: 'Beast Andrew',
+    age: '30',
+    votes: {
+      likes: '120',
+      dislikes: '5',
+    },
+  },
+];
+
 describe('Instruction processor', () => {
-  const result = generateInstructions($, instructions, []);
-  it('should run test', () => {
-    console.log(JSON.stringify(result, null, 2));
-    expect(true).toBe(true);
+  const result: { [propName: string]: any } = generateInstructions(
+    $,
+    instructions,
+    []
+  );
+
+  it('should return an object with property `person`[]', () => {
+    expect(result).toHaveProperty('person');
+    expect(result.person).toHaveLength(4);
+  });
+
+  it('should return person[] with index object properties [`name`, `age`, `votes`]', () => {
+    result.person.forEach((set, i) => {
+      expect(set).toMatchObject(expected[i]);
+    });
   });
 });

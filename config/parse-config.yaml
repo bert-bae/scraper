@@ -1,14 +1,14 @@
 Global:
-  BaseUrl: 'https://www.otisamantha.com'
-  Options:
-    # CrawlerIO options go here...
+  BaseUrl: 'https://www.google.ca'
+  Options: # CrawlerIO options go here... https://www.npmjs.com/package/crawler
 
 # Local options will always overwrite global options if two of the same values exist
 Resources:
-  Otisamantha:
+  ExampleSource:
     Url: false
     Path: /
     Output: true
+    Options: # CrawlerIO options go here... https://www.npmjs.com/package/crawler
     Instructions:
       - Selector: 'p'
         Output: post
