@@ -6,7 +6,6 @@ export const loadAllConfigs = (basePath: string): object[] => {
   const result = [];
   const fileNames = fs.readdirSync(basePath);
 
-  console.log(fileNames);
   fileNames.forEach((file) => {
     if (/.yaml|.yml/.test(file)) {
       const config = YAML.load(`${basePath}/${file}`);

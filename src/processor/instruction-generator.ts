@@ -10,16 +10,22 @@ export const generateInstructions = (
   const result: { [propName: string]: any } = {};
 
   instructions.forEach((set) => {
-    console.log([...selectorPath, set.Selector].join(' '));
     const elements = crawler([...selectorPath, set.Selector].join(' '));
     const output = [];
+    if (set.Selector === '.likes' || set.Selector === '.dislikes') {
+      console.log('=====');
+      // console.log([...selectorPath, set.Selector]);
+      console.log([...selectorPath, set.Selector].join(' '));
+    }
 
     elements.each((i, el) => {
       if (isArray(set.Operation)) {
         output.push(
           generateInstructions(crawler, set.Operation, [
             ...selectorPath,
-            `${set.Selector}:nth-child(${i})`,
+            elements.length === 1
+              ? set.Selector
+              : `${set.Selector}:nth-child(${i})`,
           ])
         );
       } else {

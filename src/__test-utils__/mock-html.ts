@@ -5,8 +5,8 @@ export const html = `
     <p class="name">Baeritto</p>
     <p class="age">28</p>
     <div class="vote-container">
-      <span class="likes">10</span>
-      <span class="dislikes">2</span>
+      <p class="likes">10</p>
+      <p class="dislikes">2</p>
     </div>
   </div>
 
@@ -14,8 +14,8 @@ export const html = `
     <p class="name">Toastalicious</p>
     <p class="age">27</p>
     <div class="vote-container">
-      <span class="likes">300123</span>
-      <span class="dislikes">17</span>
+      <p class="likes">300123</p>
+      <p class="dislikes">17</p>
     </div>
   </div>
 
@@ -23,8 +23,8 @@ export const html = `
     <p class="name">Crazy Stew</p>
     <p class="age">27</p>
     <div class="vote-container">
-      <span class="likes">20</span>
-      <span class="dislikes">2</span>
+      <p class="likes">20</p>
+      <p class="dislikes">2</p>
     </div>
   </div>
 
@@ -32,8 +32,8 @@ export const html = `
     <p class="name">Beast Andrew</p>
     <p class="age">30</p>
     <div class="vote-container">
-      <span class="likes"120</span>
-      <span class="dislikes">5</span>
+      <p class="likes">120</p>
+      <p class="dislikes">5</p>
     </div>
   </div>
 </body
