@@ -33,9 +33,15 @@ const generateCallback = (name: string, resource: Resource) => {
             }
           }
         );
+        console.log(
+          chalk.yellow(
+            `[======Resource ${name} file output to ${name}.json======]`
+          )
+        );
+      } else {
+        console.log(chalk.yellow(`[======Resource ${name} processed======]`));
+        console.log(JSON.stringify(result, null, 2));
       }
-
-      console.log(chalk.yellow(`[======Resource ${name} processed======]`));
 
       done();
     }

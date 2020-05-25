@@ -36,5 +36,5 @@ export const html = `
       <p class="dislikes">5</p>
     </div>
   </div>
-</body
+</body>
 `;
